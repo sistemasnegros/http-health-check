@@ -1,4 +1,4 @@
-const { SERVERS, RETRY, INTERVAL} = require("./config");
+const { SERVERS, RETRY, INTERVAL } = require("./config");
 const CheckServers = require("./CheckServers");
 const Logger = require("./Logger");
 
@@ -15,13 +15,12 @@ class Main {
 
     while (!exit) {
       await checkServers.check();
-      await checkServers.checkMaxRetry();
+      checkServers.checkMaxRetry();
 
       checkServers.changeServer();
 
-      Logger.info(`recheck in: ms${INTERVAL}`)
+      Logger.info(`recheck in: ms${INTERVAL}`);
       await sleep(INTERVAL);
-
     }
   }
 }

@@ -1,16 +1,9 @@
-const SERVERS = [
-  {
-    url: "https://pruebas-claro.zfr.com.co/sizfra",
-    host: "https://pruebas-claro.zfr.com.co/"
-  },
-  {
-    url: "https://pruebas-une.zfr.com.co/sizfra",
-    host: "https://pruebas-une.zfr.com.co/"
-  }
-];
+let config;
 
-const RETRY = 3;
+try {
+  config = require(`./${process.env.config}`);
+} catch {
+  config = require("./default");
+}
 
-const PATH_CONFIG = "/home/app/zfr/nginx.conf";
-const INTERVAL = 10000
-module.exports = { SERVERS, RETRY, PATH_CONFIG, INTERVAL };
+module.exports = config;

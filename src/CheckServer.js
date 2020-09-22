@@ -4,14 +4,14 @@ const https = require("https");
 const Logger = require("./Logger");
 const ConfigWeb = require("./ConfigWeb");
 
-const { PATH_CONFIG } = require("./config");
+const { TIMEOUT, PATH_CONFIG } = require("./config");
 
 const httpsAgent = new https.Agent({
   rejectUnauthorized: false
 });
 
 class CheckServer {
-  constructor(server, host, options = { timeout: 9000, httpsAgent }) {
+  constructor(server, host, options = { timeout: TIMEOUT, httpsAgent }) {
     this.server = server;
     this.options = options;
     this.fails = 0;
